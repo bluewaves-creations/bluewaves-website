@@ -1,34 +1,35 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- `app/` contains the App Router entrypoints; `page.tsx` mounts `App.tsx`, while `api/create-session/route.ts` proxies ChatKit session creation.
-- Shared UI lives in `components/`, React hooks in `hooks/`, and configuration constants in `lib/`. Keep new modules close to their consumers.
-- Global styles and Tailwind utilities are defined in `app/globals.css`; static assets belong in `public/`. Create environment files from `.env.example` and never commit secrets.
+- `app/App.tsx` renders the entire marketing page, watermark image, and chat modal shell. `app/page.tsx` simply mounts it.
+- Server routes: `app/api/create-session/route.ts` (ChatKit sessions) and `app/api/contact/route.ts` (Resend contact form).
+- Reusable UI sits in `components/` (`ChatKitPanel`, `QuotaContactForm`, `ErrorOverlay`), hooks in `hooks/` (notably `useChatQuota`), and shared constants in `lib/`.
+- Global Tailwind setup lives in `app/globals.css`; background assets and icons go in `public/` (e.g., `bluewaves-logo.webp`).
 
 ## Build, Test, and Development Commands
-- `npm run dev` (or `pnpm dev`) launches the Next.js dev server with the ChatKit widget for manual verification.
-- `npm run build` compiles production assets; follow with `npm start` to smoke-test the optimized build.
-- `npm run lint` runs ESLint with the Next.js config. Use `npm run lint -- --fix` before opening a PR.
-- Run commands from the repo root so Next.js resolves aliases like `@/components`.
+- Prefer pnpm: `pnpm dev`, `pnpm build`, `pnpm start`, `pnpm lint`. The repo supports npm as well, but pnpm is the default.
+- Launching `pnpm dev` spins up ChatKit, watermark artwork, and quota form; use it to validate both copy and assistant flow.
+- Run `pnpm lint` (with `--fix` when appropriate) before submitting changes.
 
 ## Coding Style & Naming Conventions
-- Codebase uses TypeScript, React Server/Client Components, and Tailwind CSS. Maintain 2-space indentation and prefer named exports for shared utilities.
-- Component files are `PascalCase.tsx`, hooks are `useName.ts`, and config/util modules use `camelCase.ts`.
-- Keep client-only logic behind `"use client"` directives and prefer `async`/`await` over promise chains in API routes.
-- Allow ESLint to guide formatting; add targeted comments (`// eslint-disable-next-line`) only when justified with context in the review.
+- All UI modules are client components (`"use client"`); keep new components in PascalCase and colocate styles with markup.
+- Maintain gradient headings by using the shared `headingGradient` class; match spacing conventions already present in `App.tsx`.
+- API routes (`app/api/*`) run on the edge (sessions) or Node.js (Resend). Prefer async/await and structured logging.
+- Let Tailwind guide layout; avoid inline styles unless necessary for Next Image sizing.
 
 ## Testing Guidelines
-- No automated test runner is wired up yet. Provide manual QA notes (scenarios, environment values, screenshots) with each change.
-- When adding tests, co-locate component specs under `components/__tests__/` and use React Testing Library with Vitest or Jest (document any tooling you introduce).
-- Validate that `npm run dev` and the ChatKit session flow still succeed before submitting code.
+- No automated suite yet; provide manual QA notes (desktop + mobile screenshots, quota behaviour, Resend email confirmation) in PRs.
+- When adding tests, prefer React Testing Library + Vitest colocated near components. Document setup in the PR.
+- Always verify: landing page renders, ChatKit opens, quota overlay triggers after 7 questions, contact form sends successfully (or mock).
 
 ## Commit & Pull Request Guidelines
-- Follow an imperative tone and, when practical, Conventional Commits (`feat: add`, `fix: handle`). Keep commits scoped and logically grouped.
-- Every PR needs a short summary, screenshots for UI updates, environment variable notes, and manual test evidence.
-- Reference issue numbers in the PR body (e.g., `Closes #123`) and request review before merging.
-- Rebase onto `main` to resolve conflicts; avoid merge commits in feature branches.
+- Imperative, Conventional-Commit style summaries (`feat:`, `fix:`, `refactor:`) are preferred.
+- Include before/after screenshots or screen recordings, plus note which environment variables/keys were required for QA.
+- Call out any Resend or ChatKit sandbox limitations discovered during testing.
+- Rebase frequently; avoid merge commits. Ensure `pnpm lint` (and any added tests) pass before requesting review.
 
 ## Security & Configuration Tips
-- Required secrets: `OPENAI_API_KEY` and `NEXT_PUBLIC_CHATKIT_WORKFLOW_ID`; optional `CHATKIT_API_BASE`. Store them in `.env.local` only.
-- The session endpoint reads and sets cookies; keep logging minimal and remove debug logs before production.
-- Rotate API keys immediately if they appear in git history or logs.
+- Required secrets: `OPENAI_API_KEY`, `NEXT_PUBLIC_CHATKIT_WORKFLOW_ID`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL`. Keep them in `.env.local` (never commit).
+- `useChatQuota` relies on localStorage—treat it as a UX guard. For hardened deployments, add server-side throttling.
+- `app/api/create-session` pins the workflow ID; do not reintroduce client-provided overrides.
+- Resend route sends plain HTML + text; sanitize new fields if added and monitor API usage.

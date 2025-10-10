@@ -1,12 +1,13 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import Image from "next/image";
 import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
 
 export default function App() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const headingGradient =
-    "inline-block bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text text-transparent";
+    "block w-fit bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text text-transparent";
   const composerShellClasses =
     "flex w-[min(90vw,680px)] items-center justify-between rounded-full border border-[#e5dfda] bg-white/60 px-8 py-3 text-[15px] leading-none text-[#8f8b87] shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.35)] backdrop-blur-lg"
       + " hover:border-[#d9b69c] hover:bg-white/75 transition";
@@ -25,6 +26,16 @@ export default function App() {
 
   return (
     <main className="relative min-h-screen bg-background px-6 py-12 text-body">
+      <div className="pointer-events-none fixed bottom-10 right-6 w-[66vw] max-w-[720px] opacity-20">
+        <Image
+          src="/bluewaves-logo.webp"
+          alt="Bluewaves logo watermark"
+          width={1200}
+          height={900}
+          sizes="(max-width: 1200px) 66vw, 720px"
+          priority
+        />
+      </div>
       <div className="mx-auto w-full max-w-3xl space-y-6 text-lg leading-relaxed">
         <h1
           className={`mb-16 text-center text-3xl font-semibold ${headingGradient} mx-auto`}
@@ -66,7 +77,7 @@ export default function App() {
         <h2 className={`mt-8 text-2xl font-semibold ${headingGradient}`}>
           How We Work
         </h2>
-        <h3 className={`text-xl font-semibold ${headingGradient}`}>
+        <h3 className={`mt-2 text-xl font-semibold ${headingGradient}`}>
           Waves, Not Waterfalls
         </h3>
         <p>
@@ -183,7 +194,7 @@ export default function App() {
         aria-modal="true"
         aria-hidden={isChatOpen ? "false" : "true"}
       >
-        <div className="relative w-full max-w-4xl rounded-[40px] bg-[#fcfafa] px-8 pb-8 pt-12 shadow-2xl">
+        <div className="relative w-full max-w-4xl rounded-[40px] bg-[#fcfafa] px-8 pb-8 pt-16 shadow-2xl">
           {isChatOpen ? null : (
             <span className="sr-only">Chat is closed</span>
           )}
@@ -191,7 +202,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setIsChatOpen(false)}
-              className="absolute right-8 top-8 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-[#e9d7c8] bg-[#f5e8dd] text-[#8c6a52] shadow-none transition hover:bg-[#ecd8c8] hover:text-[#74563f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d9b69c]"
+              className="absolute right-8 top-8 z-50 flex h-9 w-9 items-center justify-center rounded-full border border-[#e9d7c8] bg-[#f5e8dd] text-[#8c6a52] shadow-none transition hover:bg-[#ecd8c8] hover:text-[#74563f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d9b69c]"
               aria-label="Close chat"
             >
               <svg

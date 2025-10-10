@@ -54,7 +54,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-xl bg-transparent text-left"
+      className="relative z-10 w-full max-w-xl bg-transparent text-left"
     >
       <h3 className="bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text text-2xl font-semibold text-transparent">
         Time to talk to the team!

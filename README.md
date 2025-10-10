@@ -1,58 +1,50 @@
-# ChatKit Starter Template
+# Bluewaves Website
 
-This repository is the simplest way to bootstrap a [ChatKit](http://openai.github.io/chatkit-js/) application. It ships with a minimal Next.js UI, the ChatKit web component, and a ready-to-use session endpoint so you can experiment with OpenAI-hosted workflows built using [Agent Builder](https://platform.openai.com/agent-builder).
+This project powers the Bluewaves marketing site and ChatKit demo. It pairs a bespoke Next.js landing page with an embedded ChatKit experience backed by OpenAI-hosted workflows. Contributors can evolve both the storytelling and the assistant UI from this single codebase.
 
-## What You Get
+## Key Features
 
-- Next.js app with `<openai-chatkit>` web component and theming controls
-- API endpoint for creating a session at [`app/api/create-session/route.ts`](app/api/create-session/route.ts)
-- Quick examples for starter prompts, placeholder text, and greeting message
+- **Brand-forward landing page** crafted in `app/App.tsx` with gradient typography, watermark art, and responsive layout.
+- **ChatKit modal** (`components/ChatKitPanel.tsx`) theming that mirrors the site palette and respects per-user quotas.
+- **Daily quota UX** with a Resend-backed contact form so site visitors can reach the team once they hit the seven-message limit.
+- **API routes** for ChatKit session creation and contact form delivery (`app/api/create-session/route.ts`, `app/api/contact/route.ts`).
+- **Reusable hooks** including `useChatQuota` for client-side rate limiting.
 
 ## Getting Started
 
-Follow every step below to run the app locally and configure it for your preferred backend.
-
-### 1. Install dependencies
+Install dependencies with your preferred package manager (pnpm shown):
 
 ```bash
-npm install
+pnpm install
 ```
 
-### 2. Create your environment file
-
-Copy the example file and fill in the required values:
+Create `.env.local` from the example:
 
 ```bash
 cp .env.example .env.local
 ```
 
-### 3. Configure ChatKit credentials
+Populate the following variables:
 
-Update `.env.local` with the variables that match your setup.
+- `OPENAI_API_KEY` – server key scoped to the Agent Builder project
+- `NEXT_PUBLIC_CHATKIT_WORKFLOW_ID` – workflow powering the demo experience
+- `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL` – credentials for the quota contact form
+- *(optional)* `CHATKIT_API_BASE` for non-standard API environments
 
-- `OPENAI_API_KEY` — API key created **within the same org & project as your Agent Builder**
-- `NEXT_PUBLIC_CHATKIT_WORKFLOW_ID` — the workflow you created in [Agent Builder](https://platform.openai.com/agent-builder)
-- (optional) `CHATKIT_API_BASE` - customizable base URL for the ChatKit API endpoint
-
-### 4. Run the app
-
-```bash
-npm run dev
-```
-
-Visit `http://localhost:3000` and start chatting. Use the prompts on the start screen to verify your workflow connection, then customize the UI or prompt list in [`lib/config.ts`](lib/config.ts) and [`components/ChatKitPanel.tsx`](components/ChatKitPanel.tsx).
-
-### 5. Build for production (optional)
+Start the dev server:
 
 ```bash
-npm run build
-npm start
+pnpm dev
 ```
+
+Visit `http://localhost:3000` to explore the landing page, open the chat modal, and verify quota behaviour.
 
 ## Customization Tips
 
-- Adjust starter prompts, greeting text, and placeholder copy in [`lib/config.ts`](lib/config.ts).
-- Update the theme defaults or event handlers inside [`components/.tsx`](components/ChatKitPanel.tsx) to integrate with your product analytics or storage.
+- **Marketing copy & visuals** live in `app/App.tsx` and assets under `public/`.
+- **Chat prompts & branding** are defined in `lib/config.ts` and `components/ChatKitPanel.tsx`.
+- **Quota behaviour** is powered by `hooks/useChatQuota.ts`; tweak limits or storage strategy there.
+- **Contact form** styles live in `components/QuotaContactForm.tsx`; email delivery is handled in `app/api/contact/route.ts`.
 
 ## References
 

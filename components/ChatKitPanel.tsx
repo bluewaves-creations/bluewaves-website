@@ -427,7 +427,7 @@ type DailyLimitOverlayProps = {
 
 function DailyLimitOverlay({ resetLabel }: DailyLimitOverlayProps) {
   return (
-    <div className="pointer-events-auto absolute inset-0 z-30 flex items-center justify-center rounded-[inherit] bg-[#fcfafa]/60 px-8 pb-8 pt-12 text-left backdrop-blur-lg">
+    <div className="pointer-events-auto absolute inset-0 z-30 flex items-center justify-center bg-[#fcfafa]/80 text-left backdrop-blur-lg">
       <QuotaContactForm resetLabel={resetLabel} />
     </div>
   );
