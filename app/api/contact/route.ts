@@ -70,7 +70,7 @@ export async function POST(request: Request): Promise<Response> {
       from: FROM_EMAIL,
       to: TO_EMAIL,
       subject: "Bluewaves website contact",
-      reply_to: email,
+      replyTo: email,
       text: buildPlainText({ name, email, message }),
       html: buildHtml({ name, email, message }),
     });
