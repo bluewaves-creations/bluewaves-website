@@ -25,7 +25,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-background px-6 py-12 text-body">
+    <main className="relative min-h-screen bg-background px-6 py-12 pb-32 text-body">
       <div className="pointer-events-none fixed bottom-10 right-6 w-[66vw] max-w-[720px] opacity-20">
         <Image
           src="/bluewaves-logo.webp"
