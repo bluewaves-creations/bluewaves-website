@@ -156,6 +156,44 @@ export default function App() {
         <p>
           <em>For humans.</em>
         </p>
+        <div className="mt-14 flex items-center gap-6 text-sm text-[#8f8b87]">
+          <a
+            href="https://www.linkedin.com/company/bluewaves/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 transition hover:text-[#6c5544]"
+          >
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#e5dfda] bg-white/70 text-[#6c5544] shadow-sm">
+              <svg
+                className="h-3.5 w-3.5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M4.98 3.5a2.23 2.23 0 1 1 0 4.46 2.23 2.23 0 0 1 0-4.46ZM3 9h3.96v12H3zm6.82 0H14v1.7h.05c.58-1.1 2-2.26 4.11-2.26C21.1 8.44 22 10.35 22 13.4V21H18v-6.93c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.64V21h-3.96z" />
+              </svg>
+            </span>
+            LinkedIn
+          </a>
+          <a
+            href="https://www.youtube.com/@bluewavesboutique"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 transition hover:text-[#6c5544]"
+          >
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#e5dfda] bg-white/70 text-[#6c5544] shadow-sm">
+              <svg
+                className="h-3.5 w-3.5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M21.58 7.2a2.4 2.4 0 0 0-1.69-1.7C18.03 5 12 5 12 5s-6.03 0-7.89.5A2.4 2.4 0 0 0 2.42 7.2C2 9.07 2 12 2 12s0 2.93.42 4.8c.2.8.84 1.43 1.69 1.69C5.97 19 12 19 12 19s6.03 0 7.89-.5c.85-.26 1.49-.9 1.69-1.7.42-1.86.42-4.8.42-4.8s0-2.93-.42-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
+              </svg>
+            </span>
+            YouTube
+          </a>
+        </div>
       </div>
       <button
         type="button"
