@@ -1,6 +1,7 @@
 import Script from "next/script";
 import type { Metadata } from "next";
 import { Merriweather } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -28,7 +29,10 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className={`antialiased ${merriweather.className}`}>{children}</body>
+      <body className={`antialiased ${merriweather.className}`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
