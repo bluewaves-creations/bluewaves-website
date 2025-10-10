@@ -2,12 +2,6 @@ import { WORKFLOW_ID } from "@/lib/config";
 
 export const runtime = "edge";
 
-interface CreateSessionRequestBody {
-  workflow?: { id?: string | null } | null;
-  scope?: { user_id?: string | null } | null;
-  workflowId?: string | null;
-}
-
 const DEFAULT_CHATKIT_BASE = "https://api.openai.com";
 const SESSION_COOKIE_NAME = "chatkit_session_id";
 const SESSION_COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
@@ -29,16 +23,13 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    const parsedBody = await safeParseJson<CreateSessionRequestBody>(request);
     const { userId, sessionCookie: resolvedSessionCookie } = await resolveUserId(request);
     sessionCookie = resolvedSessionCookie;
-    const resolvedWorkflowId =
-      parsedBody?.workflow?.id ?? parsedBody?.workflowId ?? WORKFLOW_ID;
+    const resolvedWorkflowId = WORKFLOW_ID;
 
     if (process.env.NODE_ENV !== "production") {
       console.info("[create-session] handling request", {
         resolvedWorkflowId,
-        body: JSON.stringify(parsedBody),
       });
     }
 
@@ -194,16 +185,6 @@ function buildJsonResponse(
     status,
     headers: responseHeaders,
   });
-}
-
-async function safeParseJson<T>(req: Request): Promise<T | null> {
-  try {
-    const text = await req.text();
-    if (!text) { return null; }
-    return JSON.parse(text) as T;
-  } catch {
-    return null;
-  }
 }
 
 function extractUpstreamError(

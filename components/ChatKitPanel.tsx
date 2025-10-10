@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ChatKit, useChatKit } from "@openai/chatkit-react";
 import {
   STARTER_PROMPTS,
@@ -10,7 +10,8 @@ import {
   WORKFLOW_ID,
 } from "@/lib/config";
 import { ErrorOverlay } from "./ErrorOverlay";
-import type { ColorScheme } from "@/hooks/useColorScheme";
+import { useChatQuota, formatQuotaCountdown } from "@/hooks/useChatQuota";
+import { QuotaContactForm } from "./QuotaContactForm";
 
 export type FactAction = {
   type: "save";
@@ -19,10 +20,8 @@ export type FactAction = {
 };
 
 type ChatKitPanelProps = {
-  theme: ColorScheme;
   onWidgetAction: (action: FactAction) => Promise<void>;
   onResponseEnd: () => void;
-  onThemeRequest: (scheme: ColorScheme) => void;
 };
 
 type ErrorState = {
@@ -43,12 +42,16 @@ const createInitialErrors = (): ErrorState => ({
 });
 
 export function ChatKitPanel({
-  theme,
   onWidgetAction,
   onResponseEnd,
-  onThemeRequest,
 }: ChatKitPanelProps) {
+  const { consume, isExceeded, resetAt } = useChatQuota();
+  const quotaCountdown = useMemo(
+    () => formatQuotaCountdown(resetAt),
+    [resetAt]
+  );
   const processedFacts = useRef(new Set<string>());
+  const hasConsumedCurrentTurn = useRef(false);
   const [errors, setErrors] = useState<ErrorState>(() => createInitialErrors());
   const [isInitializingSession, setIsInitializingSession] = useState(true);
   const isMountedRef = useRef(true);
@@ -257,19 +260,23 @@ export function ChatKitPanel({
   const chatkit = useChatKit({
     api: { getClientSecret },
     theme: {
-      colorScheme: theme,
+      colorScheme: "light",
+      radius: "pill",
+      density: "normal",
       color: {
-        grayscale: {
-          hue: 220,
-          tint: 6,
-          shade: theme === "dark" ? -1 : -4,
-        },
         accent: {
-          primary: theme === "dark" ? "#f1f5f9" : "#0f172a",
+          primary: "#d9b69c",
           level: 1,
         },
+        surface: {
+          background: "#fcfafa",
+          foreground: "#ffffff",
+        },
       },
-      radius: "round",
+      typography: {
+        baseSize: 16,
+        fontFamily: "Inter, sans-serif",
+      },
     },
     startScreen: {
       greeting: GREETING,
@@ -277,6 +284,9 @@ export function ChatKitPanel({
     },
     composer: {
       placeholder: PLACEHOLDER_INPUT,
+      attachments: {
+        enabled: false,
+      },
     },
     threadItemActions: {
       feedback: false,
@@ -285,18 +295,6 @@ export function ChatKitPanel({
       name: string;
       params: Record<string, unknown>;
     }) => {
-      if (invocation.name === "switch_theme") {
-        const requested = invocation.params.theme;
-        if (requested === "light" || requested === "dark") {
-          if (isDev) {
-            console.debug("[ChatKitPanel] switch_theme", requested);
-          }
-          onThemeRequest(requested);
-          return { success: true };
-        }
-        return { success: false };
-      }
-
       if (invocation.name === "record_fact") {
         const id = String(invocation.params.fact_id ?? "");
         const text = String(invocation.params.fact_text ?? "");
@@ -316,8 +314,13 @@ export function ChatKitPanel({
     },
     onResponseEnd: () => {
       onResponseEnd();
+      hasConsumedCurrentTurn.current = false;
     },
     onResponseStart: () => {
+      if (!hasConsumedCurrentTurn.current) {
+        hasConsumedCurrentTurn.current = true;
+        consume();
+      }
       setErrorState({ integration: null, retryable: false });
     },
     onThreadChange: () => {
@@ -344,7 +347,7 @@ export function ChatKitPanel({
   }
 
   return (
-    <div className="relative flex h-[90vh] w-full flex-col overflow-hidden bg-white shadow-sm transition-colors dark:bg-slate-900">
+    <div className="relative flex h-[90vh] w-full flex-col overflow-hidden bg-[#fcfafa] shadow-none transition-colors">
       <ChatKit
         key={widgetInstanceKey}
         control={chatkit.control}
@@ -364,6 +367,7 @@ export function ChatKitPanel({
         onRetry={blockingError && errors.retryable ? handleResetChat : null}
         retryLabel="Restart chat"
       />
+      {isExceeded ? <DailyLimitOverlay resetLabel={quotaCountdown} /> : null}
     </div>
   );
 }
@@ -415,4 +419,16 @@ function extractErrorDetail(
   }
 
   return fallback;
+}
+
+type DailyLimitOverlayProps = {
+  resetLabel: string;
+};
+
+function DailyLimitOverlay({ resetLabel }: DailyLimitOverlayProps) {
+  return (
+    <div className="pointer-events-auto absolute inset-0 z-30 flex items-center justify-center rounded-[inherit] bg-[#fcfafa]/60 px-8 pb-8 pt-12 text-left backdrop-blur-lg">
+      <QuotaContactForm resetLabel={resetLabel} />
+    </div>
+  );
 }

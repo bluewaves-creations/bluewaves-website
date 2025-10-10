@@ -1,11 +1,19 @@
 import Script from "next/script";
 import type { Metadata } from "next";
+import { Merriweather } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AgentKit demo",
   description: "Demo of ChatKit with hosted workflow",
 };
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -20,7 +28,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className={`antialiased ${merriweather.className}`}>{children}</body>
     </html>
   );
 }
