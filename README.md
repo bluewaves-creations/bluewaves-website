@@ -45,6 +45,7 @@ Visit `http://localhost:3000` to explore the landing page, open the chat modal, 
 - **Chat prompts & branding** are defined in `lib/config.ts` and `components/ChatKitPanel.tsx`.
 - **Quota behaviour** is powered by `hooks/useChatQuota.ts`; tweak limits or storage strategy there.
 - **Contact form** styles live in `components/QuotaContactForm.tsx`; email delivery is handled in `app/api/contact/route.ts`.
+- **AI discovery artifacts** are exposed at `/.well-known/ai-plugin.json` (plugin manifest) and `/openapi.json` (contact endpoint spec).
 
 ## References
 

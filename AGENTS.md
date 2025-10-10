@@ -3,6 +3,7 @@
 ## Project Structure & Module Organization
 - `app/App.tsx` renders the entire marketing page, watermark image, and chat modal shell. `app/page.tsx` simply mounts it.
 - Server routes: `app/api/create-session/route.ts` (ChatKit sessions) and `app/api/contact/route.ts` (Resend contact form).
+- Discovery helpers: `app/.well-known/ai-plugin.json/route.ts` (plugin manifest), `app/openapi.json/route.ts` (OpenAPI spec), `app/sitemap.ts`, and `app/robots.ts`.
 - Reusable UI sits in `components/` (`ChatKitPanel`, `QuotaContactForm`, `ErrorOverlay`), hooks in `hooks/` (notably `useChatQuota`), and shared constants in `lib/`.
 - Global Tailwind setup lives in `app/globals.css`; background assets and icons go in `public/` (e.g., `bluewaves-logo.webp`).
 
@@ -29,7 +30,7 @@
 - Rebase frequently; avoid merge commits. Ensure `pnpm lint` (and any added tests) pass before requesting review.
 
 ## Security & Configuration Tips
-- Required secrets: `OPENAI_API_KEY`, `NEXT_PUBLIC_CHATKIT_WORKFLOW_ID`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL`. Keep them in `.env.local` (never commit).
+- Required secrets: `NEXT_PUBLIC_SITE_URL`, `OPENAI_API_KEY`, `NEXT_PUBLIC_CHATKIT_WORKFLOW_ID`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL`. Keep them in `.env.local` (never commit).
 - `useChatQuota` relies on localStorage—treat it as a UX guard. For hardened deployments, add server-side throttling.
 - `app/api/create-session` pins the workflow ID; do not reintroduce client-provided overrides.
 - Resend route sends plain HTML + text; sanitize new fields if added and monitor API usage.
