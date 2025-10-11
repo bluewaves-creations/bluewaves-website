@@ -56,20 +56,22 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
       onSubmit={handleSubmit}
       className="relative z-10 w-full bg-transparent text-left"
     >
-      <h3 className="bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text text-2xl font-semibold text-transparent">
+      <h3 className="text-2xl font-semibold text-[#282828]">
         Time to talk to the team!
       </h3>
-      <p className="mt-4 text-base leading-relaxed text-[#807d7d]">
+      <p className="mt-4 text-[#5d5d5d]">
         Gizmo has had a big chat day and is taking a break until tomorrow ({resetLabel} from now). If you&apos;d like the Bluewaves team to jump in, send us a quick note below and we will get back to you.
       </p>
-      <div className="mt-8 space-y-6 text-[#6c5544]">
+      <div className="mt-8 space-y-6 text-[#5d5d5d]">
         <label className="block">
-          <span className="mb-2 block text-base font-semibold text-transparent bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text">Name</span>
+          <span className="mb-2 block text-base font-semibold text-[#282828]">
+            Name
+          </span>
           <input
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="w-full rounded-xl border border-[#e5dfda] bg-white/85 px-5 py-3 text-base text-[#6c5544] shadow-inner focus:border-[#d9b69c] focus:outline-none"
+            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-base text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
             placeholder="Your name"
             autoComplete="name"
             required
@@ -77,12 +79,14 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
           />
         </label>
         <label className="block">
-          <span className="mb-2 block text-base font-semibold text-transparent bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text">Email</span>
+          <span className="mb-2 block text-base font-semibold text-[#282828]">
+            Email
+          </span>
           <input
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full rounded-xl border border-[#e5dfda] bg-white/85 px-5 py-3 text-base text-[#6c5544] shadow-inner focus:border-[#d9b69c] focus:outline-none"
+            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-base text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
             placeholder="you@company.com"
             autoComplete="email"
             required
@@ -90,11 +94,13 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
           />
         </label>
         <label className="block">
-          <span className="mb-2 block text-base font-semibold text-transparent bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text">Message</span>
+          <span className="mb-2 block text-base font-semibold text-[#282828]">
+            Message
+          </span>
           <textarea
             value={message}
             onChange={(event) => setMessage(event.target.value)}
-            className="min-h-[140px] w-full rounded-2xl border border-[#e5dfda] bg-white/85 px-5 py-3 text-base text-[#6c5544] shadow-inner focus:border-[#d9b69c] focus:outline-none"
+            className="min-h-[140px] w-full rounded-2xl border border-[#b5d4e4] bg-white px-5 py-3 text-base text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
             placeholder="Tell us what you were trying to do..."
             required
             disabled={success}
@@ -102,25 +108,25 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
         </label>
       </div>
       {error ? (
-        <p className="mt-4 text-sm text-[#b15c5c]">{error}</p>
+        <p className="mt-4 text-sm text-[#c94f5d]">{error}</p>
       ) : null}
       <div className="mt-8 flex items-center justify-between text-sm">
         <button
           type="submit"
-          className="inline-flex items-center rounded-full bg-[#d6b69b] px-5 py-2 font-medium text-black shadow-sm transition hover:bg-[#c8a48a] disabled:cursor-not-allowed disabled:bg-[#e8ded7]"
+          className="inline-flex items-center rounded-full bg-[#f2a0a8] px-5 py-2 font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99] disabled:cursor-not-allowed disabled:bg-[#f4b9bf]"
           disabled={isSubmitting || success}
         >
           {isSubmitting ? "Sending…" : "Send"}
         </button>
         <a
           href="mailto:hello@bluewaves.boutique"
-          className="text-[#8f8b87] underline decoration-[#bf9980] decoration-2 underline-offset-4 hover:decoration-[#a67858]"
+          className="text-[#5d5d5d] underline decoration-[#f2a0a8] decoration-2 underline-offset-4 hover:decoration-[#e68f99]"
         >
           Or email hello@bluewaves.boutique
         </a>
       </div>
       {success ? (
-        <p className="mt-6 text-base leading-relaxed text-[#807d7d]">
+        <p className="mt-6 text-[#5d5d5d]">
           Thanks for reaching out—Érica, Bertrand or Bernardo will follow up soon.
         </p>
       ) : null}

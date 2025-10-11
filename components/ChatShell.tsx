@@ -34,7 +34,7 @@ export function ChatShell({
           </svg>
         </Link>
         <div
-          className="mx-auto w-full max-w-[820px] rounded-3xl border border-[#9dcce4] bg-[#bde0f2] px-4 py-6 shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.25)] sm:px-10 sm:py-10"
+          className="mx-auto w-full max-w-[820px] rounded-3xl border border-[#9dcce4] bg-[#bde0f2] px-4 py-6 text-[18px] leading-relaxed text-[#5d5d5d] shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.25)] sm:px-10 sm:py-10"
           style={{ fontFamily: fontStack }}
         >
           {children}
