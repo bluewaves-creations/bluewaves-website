@@ -9,8 +9,8 @@ export function ChatShell({
   backHref?: string;
 }) {
   return (
-    <main className="relative min-h-screen bg-background px-6 py-12 text-body">
-      <div className="relative mx-auto w-full max-w-4xl px-4 pb-12 pt-24">
+    <main className="relative min-h-screen bg-background px-4 py-12 text-body sm:px-6">
+      <div className="relative mx-auto w-full max-w-4xl px-3 pb-12 pt-24 sm:px-6">
         <Link
           href={backHref}
           className="absolute right-8 top-8 flex h-9 w-9 items-center justify-center rounded-full border border-[#e9d7c8] bg-[#f5e8dd] text-[#8c6a52] shadow-none transition hover:bg-[#ecd8c8] hover:text-[#74563f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d9b69c]"
