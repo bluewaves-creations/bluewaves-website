@@ -110,7 +110,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
       {error ? (
         <p className="mt-4 text-sm text-[#c94f5d]">{error}</p>
       ) : null}
-      <div className="mt-8 flex items-center justify-between text-[18px]">
+      <div className="mt-8 flex flex-col gap-4 text-[18px] sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
           className="inline-flex items-center rounded-full bg-[#f2a0a8] px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99] disabled:cursor-not-allowed disabled:bg-[#f4b9bf]"
