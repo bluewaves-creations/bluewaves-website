@@ -22,19 +22,19 @@ export default async function ChatErrorPage({
       <div className="flex flex-wrap gap-4 text-sm text-[#5d5d5d]">
         <Link
           href="/chat"
-          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-[#f2a0a8] px-5 py-2 font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99]"
+          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-[#f2a0a8] px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99]"
         >
           Try Gizmo again
         </Link>
         <Link
           href="/quota"
-          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-white px-5 py-2 font-medium text-[#282828] shadow-sm transition hover:border-[#e68f99]"
+          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-white px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:border-[#e68f99]"
         >
           Contact the team
         </Link>
         <Link
           href="/"
-          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-white px-5 py-2 font-medium text-[#282828] shadow-sm transition hover:border-[#e68f99]"
+          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-white px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:border-[#e68f99]"
         >
           Back to home
         </Link>
