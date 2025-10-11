@@ -8,11 +8,9 @@ export default function ChatPage() {
   const handleResponseEnd = useCallback(() => {}, []);
 
   return (
-    <div className="mx-auto w-full max-w-[780px]">
-      <ChatKitPanel
-        onWidgetAction={handleWidgetAction}
-        onResponseEnd={handleResponseEnd}
-      />
-    </div>
+    <ChatKitPanel
+      onWidgetAction={handleWidgetAction}
+      onResponseEnd={handleResponseEnd}
+    />
   );
 }

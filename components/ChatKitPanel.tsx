@@ -254,11 +254,11 @@ export function ChatKitPanel({
       density: "compact",
       color: {
         accent: {
-          primary: "#d9b69c",
+          primary: "#f2a0a8",
           level: 1,
         },
         surface: {
-          background: "#fcfafa",
+          background: "#bde0f2",
           foreground: "#ffffff",
         },
       },
@@ -364,10 +364,10 @@ export function ChatKitPanel({
   }
 
   return (
-    <div className="relative flex h-[80vh] w-full flex-col overflow-hidden bg-[#fcfafa]">
+    <div className="relative flex h-[80vh] w-full flex-col overflow-hidden rounded-2xl bg-white/80 p-4 shadow-inner sm:p-6">
       <ChatKit control={chatkit.control} className="block h-full w-full" />
       {isInitializingSession && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#fcfafa] text-[#6c5544]">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-2xl bg-white/80 text-[#6c5544]">
           Preparing Gizmo…
         </div>
       )}

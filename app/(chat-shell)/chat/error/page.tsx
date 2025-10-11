@@ -14,7 +14,7 @@ export default async function ChatErrorPage({
       "We couldn’t start Gizmo right now. Please try again or drop us a note.";
 
   return (
-    <div className="mx-auto w-full max-w-[780px] space-y-6 px-8 text-lg leading-relaxed">
+    <div className="space-y-6 text-lg leading-relaxed">
       <h1 className="bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text text-3xl font-semibold text-transparent">
         Something went sideways
       </h1>
