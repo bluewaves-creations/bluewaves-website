@@ -1,9 +1,13 @@
 import Link from "next/link";
 
+type ErrorPageSearchParams = Record<string, string | string[] | undefined>;
+
+export const runtime = "nodejs";
+
 export default async function ChatErrorPage({
   searchParams,
 }: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  searchParams: Promise<ErrorPageSearchParams>;
 }) {
   const params = await searchParams;
   const raw = params?.message;
