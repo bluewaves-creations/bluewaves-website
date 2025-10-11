@@ -198,16 +198,14 @@ export default function App() {
         </span>
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#d6b69b] text-black shadow-sm transition group-hover:bg-[#c8a48a]">
           <svg
-            className="h-4 w-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            viewBox="0 0 20 20"
             aria-hidden="true"
           >
-            <path d="M12 5v14m0-14 5 5m-5-5-5 5" />
+            <path d="M9 16V6.414L5.707 9.707a1 1 0 1 1-1.414-1.414l5-5 .076-.069a1 1 0 0 1 1.338.069l5 5 .068.076a1 1 0 0 1-1.406 1.406l-.076-.068L11 6.414V16a1 1 0 1 1-2 0Z" />
           </svg>
         </span>
       </Link>
