@@ -364,10 +364,10 @@ export function ChatKitPanel({
   }
 
   return (
-    <div className="relative flex h-[80vh] w-full flex-col overflow-hidden rounded-2xl bg-white/80 p-4 shadow-inner sm:p-6">
+    <div className="relative flex h-[80vh] w-full flex-col overflow-hidden rounded-2xl">
       <ChatKit control={chatkit.control} className="block h-full w-full" />
       {isInitializingSession && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-2xl bg-white/80 text-[#6c5544]">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-2xl bg-[#bde0f2]/85 text-[#26465a]">
           Preparing Gizmo…
         </div>
       )}
