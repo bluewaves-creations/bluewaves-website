@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- `app/App.tsx` renders the marketing page and CTA; `app/chat/page.tsx` hosts the ChatKit experience; `app/quota/page.tsx` and `app/chat/error/page.tsx` handle quota and failure fallbacks.
+- `app/App.tsx` renders the marketing page and CTA; the chat journey lives under `app/(chat-shell)/` where `layout.tsx` applies the shared shell to `chat`, `quota`, and `chat/error` routes.
 - API routes: `app/api/create-session/route.ts` (ChatKit sessions) and `app/api/contact/route.ts` (Resend contact form).
 - Discovery helpers: `app/.well-known/ai-plugin.json/route.ts` (plugin manifest), `app/openapi.json/route.ts` (OpenAPI spec), `app/sitemap.ts`, and `app/robots.ts`.
 - Reusable UI sits in `components/` (`ChatKitPanel`, `QuotaContactForm`, `ErrorOverlay`), hooks in `hooks/` (notably `useChatQuota`), and shared constants in `lib/`.
