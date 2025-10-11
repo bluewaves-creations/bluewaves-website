@@ -8,6 +8,9 @@ export function ChatShell({
   children: ReactNode;
   backHref?: string;
 }) {
+  const fontStack =
+    'ui-sans-serif, -apple-system, system-ui, "Segoe UI", "Noto Sans", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif';
+
   return (
     <main className="relative min-h-screen bg-background px-4 py-12 text-body sm:px-6">
       <div className="relative mx-auto w-full max-w-4xl pb-12 pt-24">
@@ -30,7 +33,10 @@ export function ChatShell({
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </Link>
-        <div className="mx-auto w-full max-w-[820px] rounded-3xl border border-[#9dcce4] bg-[#bde0f2] px-4 py-6 shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.25)] sm:px-10 sm:py-10">
+        <div
+          className="mx-auto w-full max-w-[820px] rounded-3xl border border-[#9dcce4] bg-[#bde0f2] px-4 py-6 shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.25)] sm:px-10 sm:py-10"
+          style={{ fontFamily: fontStack }}
+        >
           {children}
         </div>
       </div>
