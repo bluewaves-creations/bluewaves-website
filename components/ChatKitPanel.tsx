@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChatKit, useChatKit } from "@openai/chatkit-react";
+import { useRouter } from "next/navigation";
 import {
   STARTER_PROMPTS,
   PLACEHOLDER_INPUT,
@@ -9,9 +10,7 @@ import {
   CREATE_SESSION_ENDPOINT,
   WORKFLOW_ID,
 } from "@/lib/config";
-import { ErrorOverlay } from "./ErrorOverlay";
-import { useChatQuota, formatQuotaCountdown } from "@/hooks/useChatQuota";
-import { QuotaContactForm } from "./QuotaContactForm";
+import { useChatQuota } from "@/hooks/useChatQuota";
 
 export type FactAction = {
   type: "save";
@@ -45,11 +44,8 @@ export function ChatKitPanel({
   onWidgetAction,
   onResponseEnd,
 }: ChatKitPanelProps) {
-  const { consume, isExceeded, resetAt } = useChatQuota();
-  const quotaCountdown = useMemo(
-    () => formatQuotaCountdown(resetAt),
-    [resetAt]
-  );
+  const router = useRouter();
+  const { consume, isExceeded } = useChatQuota();
   const processedFacts = useRef(new Set<string>());
   const hasConsumedCurrentTurn = useRef(false);
   const [errors, setErrors] = useState<ErrorState>(() => createInitialErrors());
@@ -62,7 +58,6 @@ export function ChatKitPanel({
       ? "ready"
       : "pending"
   );
-  const [widgetInstanceKey, setWidgetInstanceKey] = useState(0);
 
   const setErrorState = useCallback((updates: Partial<ErrorState>) => {
     setErrors((current) => ({ ...current, ...updates }));
@@ -147,17 +142,11 @@ export function ChatKitPanel({
     }
   }, [isWorkflowConfigured, setErrorState]);
 
-  const handleResetChat = useCallback(() => {
-    processedFacts.current.clear();
-    if (isBrowser) {
-      setScriptStatus(
-        window.customElements?.get("openai-chatkit") ? "ready" : "pending"
-      );
+  useEffect(() => {
+    if (scriptStatus === "ready" && isInitializingSession) {
+      setIsInitializingSession(false);
     }
-    setIsInitializingSession(true);
-    setErrors(createInitialErrors());
-    setWidgetInstanceKey((prev) => prev + 1);
-  }, []);
+  }, [scriptStatus, isInitializingSession]);
 
   const getClientSecret = useCallback(
     async (currentSecret: string | null) => {
@@ -249,7 +238,7 @@ export function ChatKitPanel({
         }
         throw error instanceof Error ? error : new Error(detail);
       } finally {
-        if (isMountedRef.current && !currentSecret) {
+        if (isMountedRef.current) {
           setIsInitializingSession(false);
         }
       }
@@ -262,7 +251,7 @@ export function ChatKitPanel({
     theme: {
       colorScheme: "light",
       radius: "pill",
-      density: "normal",
+      density: "compact",
       color: {
         accent: {
           primary: "#d9b69c",
@@ -274,8 +263,7 @@ export function ChatKitPanel({
         },
       },
       typography: {
-        baseSize: 16,
-        fontFamily: "Inter, sans-serif",
+        baseSize: 18,
       },
     },
     startScreen: {
@@ -336,6 +324,35 @@ export function ChatKitPanel({
   const activeError = errors.session ?? errors.integration;
   const blockingError = errors.script ?? activeError;
 
+  const hasRedirectedToQuota = useRef(false);
+  const hasRedirectedToError = useRef(false);
+
+  useEffect(() => {
+    if (isDev) {
+      console.debug("[ChatKitPanel] isInitializingSession", isInitializingSession);
+    }
+  }, [isInitializingSession]);
+
+  useEffect(() => {
+    if (isExceeded && !hasRedirectedToQuota.current) {
+      hasRedirectedToQuota.current = true;
+      router.replace("/quota");
+    }
+  }, [isExceeded, router]);
+
+  useEffect(() => {
+    if (
+      blockingError &&
+      typeof blockingError === "string" &&
+      !isInitializingSession &&
+      !hasRedirectedToError.current
+    ) {
+      hasRedirectedToError.current = true;
+      const params = new URLSearchParams({ message: blockingError });
+      router.replace(`/chat/error?${params.toString()}`);
+    }
+  }, [blockingError, isInitializingSession, router]);
+
   if (isDev) {
     console.debug("[ChatKitPanel] render state", {
       isInitializingSession,
@@ -347,27 +364,13 @@ export function ChatKitPanel({
   }
 
   return (
-    <div className="relative flex h-[90vh] w-full flex-col overflow-hidden bg-[#fcfafa] shadow-none transition-colors">
-      <ChatKit
-        key={widgetInstanceKey}
-        control={chatkit.control}
-        className={
-          blockingError || isInitializingSession
-            ? "pointer-events-none opacity-0"
-            : "block h-full w-full"
-        }
-      />
-      <ErrorOverlay
-        error={blockingError}
-        fallbackMessage={
-          blockingError || !isInitializingSession
-            ? null
-            : "Loading assistant session..."
-        }
-        onRetry={blockingError && errors.retryable ? handleResetChat : null}
-        retryLabel="Restart chat"
-      />
-      {isExceeded ? <DailyLimitOverlay resetLabel={quotaCountdown} /> : null}
+    <div className="relative flex h-[80vh] w-full flex-col overflow-hidden bg-[#fcfafa]">
+      <ChatKit control={chatkit.control} className="block h-full w-full" />
+      {isInitializingSession && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#fcfafa] text-[#6c5544]">
+          Preparing Gizmo…
+        </div>
+      )}
     </div>
   );
 }
@@ -419,16 +422,4 @@ function extractErrorDetail(
   }
 
   return fallback;
-}
-
-type DailyLimitOverlayProps = {
-  resetLabel: string;
-};
-
-function DailyLimitOverlay({ resetLabel }: DailyLimitOverlayProps) {
-  return (
-    <div className="pointer-events-auto absolute inset-0 z-30 flex items-center justify-center bg-[#fcfafa]/80 text-left backdrop-blur-lg">
-      <QuotaContactForm resetLabel={resetLabel} />
-    </div>
-  );
 }

@@ -1,8 +1,8 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- `app/App.tsx` renders the entire marketing page, watermark image, and chat modal shell. `app/page.tsx` simply mounts it.
-- Server routes: `app/api/create-session/route.ts` (ChatKit sessions) and `app/api/contact/route.ts` (Resend contact form).
+- `app/App.tsx` renders the marketing page and CTA; `app/chat/page.tsx` hosts the ChatKit experience; `app/quota/page.tsx` and `app/chat/error/page.tsx` handle quota and failure fallbacks.
+- API routes: `app/api/create-session/route.ts` (ChatKit sessions) and `app/api/contact/route.ts` (Resend contact form).
 - Discovery helpers: `app/.well-known/ai-plugin.json/route.ts` (plugin manifest), `app/openapi.json/route.ts` (OpenAPI spec), `app/sitemap.ts`, and `app/robots.ts`.
 - Reusable UI sits in `components/` (`ChatKitPanel`, `QuotaContactForm`, `ErrorOverlay`), hooks in `hooks/` (notably `useChatQuota`), and shared constants in `lib/`.
 - Global Tailwind setup lives in `app/globals.css`; background assets and icons go in `public/` (e.g., `bluewaves-logo.webp`).

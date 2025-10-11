@@ -6,6 +6,7 @@ This project powers the Bluewaves marketing site and ChatKit demo. It pairs a be
 
 - **Brand-forward landing page** crafted in `app/App.tsx` with gradient typography, watermark art, and responsive layout.
 - **ChatKit modal** (`components/ChatKitPanel.tsx`) theming that mirrors the site palette and respects per-user quotas.
+- **Dedicated chat journey** at `/chat`, with quota handoff (`/quota`) and error recovery pages for a smooth multi-device flow.
 - **Daily quota UX** with a Resend-backed contact form so site visitors can reach the team once they hit the seven-message limit.
 - **API routes** for ChatKit session creation and contact form delivery (`app/api/create-session/route.ts`, `app/api/contact/route.ts`).
 - **Reusable hooks** including `useChatQuota` for client-side rate limiting.

@@ -56,6 +56,7 @@ const merriweather = Merriweather({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   display: "swap",
+  variable: "--font-merriweather",
 });
 
 export default function RootLayout({
@@ -71,7 +72,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className={`antialiased ${merriweather.className}`}>
+      <body className={`antialiased ${merriweather.className} ${merriweather.variable}`}>
         {children}
         <StructuredData />
         <Analytics />

@@ -1,28 +1,14 @@
 "use client";
 
-import { useCallback, useState } from "react";
 import Image from "next/image";
-import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
+import Link from "next/link";
 
 export default function App() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
   const headingGradient =
     "block w-fit bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text text-transparent";
   const composerShellClasses =
     "flex w-[min(90vw,680px)] items-center justify-between rounded-full border border-[#e5dfda] bg-white/60 px-8 py-3 text-[15px] leading-none text-[#8f8b87] shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.35)] backdrop-blur-lg"
       + " hover:border-[#d9b69c] hover:bg-white/75 transition";
-
-  const handleWidgetAction = useCallback(async (action: FactAction) => {
-    if (process.env.NODE_ENV !== "production") {
-      console.info("[ChatKitPanel] widget action", action);
-    }
-  }, []);
-
-  const handleResponseEnd = useCallback(() => {
-    if (process.env.NODE_ENV !== "production") {
-      console.debug("[ChatKitPanel] response end");
-    }
-  }, []);
 
   return (
     <main className="relative min-h-screen bg-background px-6 py-12 pb-32 text-body">
@@ -195,15 +181,18 @@ export default function App() {
           </a>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={() => setIsChatOpen(true)}
+      <Link
+        href="/chat"
         className={`group fixed bottom-10 left-1/2 -translate-x-1/2 transform ${composerShellClasses} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d9b69c]`}
         aria-label="Open chat"
       >
         <span
           className="font-medium tracking-wide"
-          style={{ fontFamily: "Inter, Arial, sans-serif" }}
+          style={{
+            fontFamily:
+              'ui-sans-serif, -apple-system, system-ui, "Segoe UI", "Noto Sans", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif',
+            fontSize: "18px",
+          }}
         >
           Ask Gizmo
         </span>
@@ -221,49 +210,7 @@ export default function App() {
             <path d="M12 5v14m0-14 5 5m-5-5-5 5" />
           </svg>
         </span>
-      </button>
-      <div
-        className={`fixed inset-0 z-50 flex items-center justify-center bg-[#312c29]/50 px-4 py-8 backdrop-blur transition-opacity ${
-          isChatOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0 invisible"
-        }`}
-        role="dialog"
-        aria-modal="true"
-        aria-hidden={isChatOpen ? "false" : "true"}
-      >
-        <div className="relative w-full max-w-4xl rounded-[40px] bg-[#fcfafa] px-8 pb-8 pt-16 shadow-2xl">
-          {isChatOpen ? null : (
-            <span className="sr-only">Chat is closed</span>
-          )}
-          <div className={isChatOpen ? "block" : "hidden"}>
-            <button
-              type="button"
-              onClick={() => setIsChatOpen(false)}
-              className="absolute right-8 top-8 z-50 flex h-9 w-9 items-center justify-center rounded-full border border-[#e9d7c8] bg-[#f5e8dd] text-[#8c6a52] shadow-none transition hover:bg-[#ecd8c8] hover:text-[#74563f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d9b69c]"
-              aria-label="Close chat"
-            >
-              <svg
-                className="h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          </div>
-          <ChatKitPanel
-            onWidgetAction={handleWidgetAction}
-            onResponseEnd={handleResponseEnd}
-          />
-        </div>
-      </div>
+      </Link>
     </main>
   );
 }
