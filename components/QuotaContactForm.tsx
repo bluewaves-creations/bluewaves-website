@@ -71,7 +71,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-base text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
+            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
             placeholder="Your name"
             autoComplete="name"
             required
@@ -86,7 +86,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-base text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
+            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
             placeholder="you@company.com"
             autoComplete="email"
             required
@@ -100,7 +100,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
           <textarea
             value={message}
             onChange={(event) => setMessage(event.target.value)}
-            className="min-h-[140px] w-full rounded-2xl border border-[#b5d4e4] bg-white px-5 py-3 text-base text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
+            className="min-h-[140px] w-full rounded-2xl border border-[#b5d4e4] bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
             placeholder="Tell us what you were trying to do..."
             required
             disabled={success}
@@ -110,10 +110,10 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
       {error ? (
         <p className="mt-4 text-sm text-[#c94f5d]">{error}</p>
       ) : null}
-      <div className="mt-8 flex items-center justify-between text-sm">
+      <div className="mt-8 flex items-center justify-between text-[18px]">
         <button
           type="submit"
-          className="inline-flex items-center rounded-full bg-[#f2a0a8] px-5 py-2 font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99] disabled:cursor-not-allowed disabled:bg-[#f4b9bf]"
+          className="inline-flex items-center rounded-full bg-[#f2a0a8] px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99] disabled:cursor-not-allowed disabled:bg-[#f4b9bf]"
           disabled={isSubmitting || success}
         >
           {isSubmitting ? "Sending…" : "Send"}
