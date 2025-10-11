@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -13,6 +14,16 @@ export function ChatShell({
 
   return (
     <main className="relative min-h-screen bg-background px-4 py-12 text-body sm:px-6">
+      <div className="pointer-events-none fixed bottom-10 right-6 w-[66vw] max-w-[720px] opacity-20">
+        <Image
+          src="/bluewaves-logo.webp"
+          alt="Bluewaves logo watermark"
+          width={1200}
+          height={900}
+          sizes="(max-width: 1200px) 66vw, 720px"
+          priority={false}
+        />
+      </div>
       <div className="relative mx-auto w-full max-w-4xl pb-12 pt-24">
         <Link
           href={backHref}
