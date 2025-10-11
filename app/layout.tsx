@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: "Bluewaves – AI products you can actually use",
   description:
-    "Bluewaves delivers production-ready AI tools in weeks, combining ChatKit workflows with a focused Wave delivery model.",
+    "Bluewaves crafts production-ready AI tools for small and midsize teams—think Gizmo Phoenix AI colleagues and our AI Personal Trainer—delivered in weeks through focused Waves.",
   alternates: {
     canonical: baseUrl,
   },
