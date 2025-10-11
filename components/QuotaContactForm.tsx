@@ -56,7 +56,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
       onSubmit={handleSubmit}
       className="relative z-10 w-full bg-transparent text-left"
     >
-      <h3 className="text-2xl font-semibold text-[#282828]">
+      <h3 className="text-3xl font-semibold text-[#282828]">
         Time to talk to the team!
       </h3>
       <p className="mt-4 text-[#5d5d5d]">
