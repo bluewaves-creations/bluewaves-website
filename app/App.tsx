@@ -196,7 +196,7 @@ export default function App() {
         >
           Ask Gizmo
         </span>
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#d6b69b] text-black shadow-sm transition group-hover:bg-[#c8a48a]">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f2a0a8] text-[#282828] shadow-sm transition group-hover:bg-[#e68f99]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
