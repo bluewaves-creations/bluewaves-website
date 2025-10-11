@@ -24,7 +24,7 @@ export default function App() {
       </div>
       <div className="mx-auto w-full max-w-3xl space-y-6 text-lg leading-relaxed">
         <h1
-          className={`mb-16 text-center text-3xl font-semibold ${headingGradient} mx-auto`}
+          className={`mb-24 text-center text-3xl font-semibold ${headingGradient} mx-auto`}
         >
           We craft AI products you can actually use.
         </h1>
@@ -32,7 +32,7 @@ export default function App() {
         <p>When it usually needs months to show value, we need three weeks.</p>
         <p>When most talk about transformation, we just hand you the right tools.</p>
         <p>We&apos;re Bluewaves. Three friends who believe work should make people proud.</p>
-        <h2 className={`mt-8 text-2xl font-semibold ${headingGradient}`}>
+        <h2 className={`mt-24 text-2xl font-semibold ${headingGradient}`}>
           To the forgotten ones
         </h2>
         <p>
