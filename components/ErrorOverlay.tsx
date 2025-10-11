@@ -32,7 +32,7 @@ export function ErrorOverlay({
         {error && onRetry ? (
           <button
             type="button"
-            className="mt-4 inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-none transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2"
+            className="mt-4 inline-flex items-center justify-center rounded-lg bg-cta px-4 py-2 text-sm font-semibold text-white shadow-none transition hover:bg-cta-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffe2e9]"
             onClick={onRetry}
           >
             {retryLabel ?? "Restart chat"}

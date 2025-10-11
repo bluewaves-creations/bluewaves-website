@@ -258,7 +258,7 @@ export function ChatKitPanel({
           level: 1,
         },
         surface: {
-          background: "#bde0f2",
+          background: "#EADBD1",
           foreground: "#ffffff",
         },
       },

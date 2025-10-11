@@ -53,7 +53,7 @@ export default function App() {
         <p>
           <strong>AI Personal Trainer</strong> — Learn by doing, not reading
           <br />
-          Our personal training app lives inside ChatGPT. Real situations, practical guides, instant results. Start using AI productively today in your business, not after a three-day workshop. When you&apos;re ready for more, move seamlessly to Gizmo Phoenix.
+          Our personal training app will soon live inside ChatGPT. Real situations, practical guides, instant results. Start using AI productively today in your business, not after a three-day workshop. When you&apos;re ready for more, move seamlessly to Gizmo Phoenix.
         </p>
         <p>
           <strong>Masterclasses</strong> — For those who need to know
@@ -97,7 +97,7 @@ export default function App() {
         <h2 className={`mt-8 text-2xl font-semibold ${headingGradient}`}>
           Who We Are
         </h2>
-        <p>Three friends who asked one question: &quot;Are people happy?&quot;</p>
+        <p>Three friends obsessed with one question: &quot;Are people happy?&quot;</p>
         <p>
           <strong>Bertrand</strong> built AI systems for decades. Serial entrepreneur. PhD. Lived everywhere from Budapest winters to Ericeira summers. Still codes like he surfs—reading patterns, finding flow, making it look easy.
         </p>

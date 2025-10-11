@@ -22,19 +22,19 @@ export default async function ChatErrorPage({
       <div className="flex flex-wrap gap-4 text-sm text-[#5d5d5d]">
         <Link
           href="/chat"
-          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-[#f2a0a8] px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99]"
+          className="inline-flex items-center rounded-full bg-cta px-5 py-2 text-[18px] font-medium text-white shadow-sm transition hover:bg-cta-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffe2e9]"
         >
           Try Gizmo again
         </Link>
         <Link
           href="/quota"
-          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-white px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:border-[#e68f99]"
+          className="inline-flex items-center rounded-full bg-white px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:bg-[#fff5f8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffe2e9]"
         >
           Contact the team
         </Link>
         <Link
           href="/"
-          className="inline-flex items-center rounded-full border border-[#f2a0a8] bg-white px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:border-[#e68f99]"
+          className="inline-flex items-center rounded-full bg-white px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:bg-[#fff5f8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffe2e9]"
         >
           Back to home
         </Link>

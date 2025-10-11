@@ -71,7 +71,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
+            className="w-full rounded-xl bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f2a0a8]"
             placeholder="Your name"
             autoComplete="name"
             required
@@ -86,7 +86,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full rounded-xl border border-[#b5d4e4] bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
+            className="w-full rounded-xl bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f2a0a8]"
             placeholder="you@company.com"
             autoComplete="email"
             required
@@ -100,7 +100,7 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
           <textarea
             value={message}
             onChange={(event) => setMessage(event.target.value)}
-            className="min-h-[140px] w-full rounded-2xl border border-[#b5d4e4] bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus:border-[#f2a0a8] focus:outline-none"
+            className="min-h-[140px] w-full rounded-2xl bg-white px-5 py-3 text-[18px] text-[#282828] shadow-inner focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f2a0a8]"
             placeholder="Tell us what you were trying to do..."
             required
             disabled={success}
@@ -113,14 +113,14 @@ export function QuotaContactForm({ resetLabel }: QuotaContactFormProps) {
       <div className="mt-8 flex flex-col gap-4 text-[18px] sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          className="inline-flex items-center rounded-full bg-[#f2a0a8] px-5 py-2 text-[18px] font-medium text-[#282828] shadow-sm transition hover:bg-[#e68f99] disabled:cursor-not-allowed disabled:bg-[#f4b9bf]"
+          className="inline-flex items-center rounded-full bg-cta px-5 py-2 text-[18px] font-medium text-white shadow-sm transition hover:bg-cta-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffe2e9] disabled:cursor-not-allowed disabled:bg-cta/70"
           disabled={isSubmitting || success}
         >
           {isSubmitting ? "Sending…" : "Send"}
         </button>
         <a
           href="mailto:hello@bluewaves.boutique"
-          className="text-[#5d5d5d] underline decoration-[#f2a0a8] decoration-2 underline-offset-4 hover:decoration-[#e68f99]"
+          className="text-[#5d5d5d] underline decoration-[#00c3d0] decoration-2 underline-offset-4 hover:decoration-[#009ca6]"
         >
           Or email hello@bluewaves.boutique
         </a>
