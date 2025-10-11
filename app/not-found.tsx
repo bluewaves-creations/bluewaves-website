@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { ChatShell } from "@/components/ChatShell";
 
 export default function NotFound() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col justify-center px-6 py-16 text-body sm:px-8">
+    <ChatShell showCloseButton={false}>
       <div className="space-y-6">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#8f8b87]">
           404
@@ -35,6 +36,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </main>
+    </ChatShell>
   );
 }
