@@ -8,27 +8,27 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
     label: "Can Bluewaves build AI tools for my team?",
     prompt: "How can Bluewaves craft AI tools for my business within a Wave?",
-    icon: "circle-question",
+    icon: "square-code",
   },
   {
     label: "How do Waves work?",
     prompt: "Explain how Bluewaves delivers projects in Waves.",
-    icon: "circle-question",
+    icon: "compass",
   },
   {
     label: "Show me Gizmo Phoenix",
     prompt: "Describe Gizmo Phoenix and what problems it solves.",
-    icon: "circle-question",
+    icon: "sparkle-double",
   },
   {
     label: "Who leads Bluewaves?",
     prompt: "Tell me about the Bluewaves founding team.",
-    icon: "circle-question",
+    icon: "profile-card",
   },
   {
     label: "What does it cost?",
     prompt: "Give me a sense of pricing to start a Wave with Bluewaves.",
-    icon: "circle-question",
+    icon: "chart",
   },
 ];
 
