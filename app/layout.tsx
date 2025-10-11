@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${baseUrl}/bluewaves-logo.webp`,
+        url: `${baseUrl}/bluewaves-opengraph.webp`,
         width: 1200,
-        height: 900,
-        alt: "Bluewaves logo",
+        height: 630,
+        alt: "Bluewaves open graph preview",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Bluewaves – AI products you can actually use",
     description:
       "Waves, not slides. Discover Gizmo Phoenix, AI Personal Trainer, and how Bluewaves ships AI tools in weeks.",
-    images: [`${baseUrl}/bluewaves-logo.webp`],
+    images: [`${baseUrl}/bluewaves-opengraph.webp`],
   },
   robots: {
     index: true,
