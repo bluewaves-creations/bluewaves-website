@@ -7,7 +7,7 @@ export default function App() {
   const headingGradient =
     "block w-fit bg-gradient-to-r from-[#454343] via-[#5c5a5a] to-[#807d7d] bg-clip-text text-transparent";
   const composerShellClasses =
-    "flex w-[min(90vw,680px)] items-center justify-between rounded-full border border-[#e5dfda] bg-white/60 px-8 py-3 text-[15px] leading-none text-[#8f8b87] shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.35)] backdrop-blur-lg"
+    "flex w-[min(90vw,680px)] items-center justify-between rounded-full border border-[#e5dfda] bg-white/60 pl-4 pr-3 py-3 text-[15px] leading-none text-[#8f8b87] shadow-[0px_18px_36px_-20px_rgba(0,0,0,0.35)] backdrop-blur-lg"
       + " hover:border-[#d9b69c] hover:bg-white/75 transition";
 
   return (
@@ -128,7 +128,7 @@ export default function App() {
           </span>
           <a
             href="mailto:hello@bluewaves.boutique"
-            className="underline decoration-[#bf9980] decoration-2 underline-offset-4 hover:decoration-[#a67858]"
+            className="underline decoration-[#00c3d0] decoration-2 underline-offset-4 hover:decoration-[#009ca6]"
           >
             hello@bluewaves.boutique
           </a>
@@ -187,7 +187,7 @@ export default function App() {
         aria-label="Open chat"
       >
         <span
-          className="font-medium tracking-wide"
+          className="font-normal tracking-wide"
           style={{
             fontFamily:
               'ui-sans-serif, -apple-system, system-ui, "Segoe UI", "Noto Sans", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif',
@@ -196,7 +196,7 @@ export default function App() {
         >
           Ask Gizmo
         </span>
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f2a0a8] text-[#282828] shadow-sm transition group-hover:bg-[#e68f99]">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-cta text-white shadow-sm transition group-hover:bg-cta-hover">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

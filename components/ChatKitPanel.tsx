@@ -254,7 +254,7 @@ export function ChatKitPanel({
       density: "compact",
       color: {
         accent: {
-          primary: "#f2a0a8",
+          primary: "#FF2D55",
           level: 1,
         },
         surface: {
