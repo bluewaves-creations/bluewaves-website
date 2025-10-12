@@ -183,7 +183,7 @@ export default function App() {
       </div>
       <Link
         href="/chat"
-        className={`group fixed bottom-10 left-1/2 -translate-x-1/2 transform ${composerShellClasses} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d9b69c]`}
+        className={`group fixed bottom-6 left-1/2 -translate-x-1/2 transform sm:bottom-10 ${composerShellClasses} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d9b69c]`}
         aria-label="Open chat"
       >
         <span
