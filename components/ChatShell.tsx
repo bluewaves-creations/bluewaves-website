@@ -17,7 +17,7 @@ export function ChatShell({
     'ui-sans-serif, -apple-system, system-ui, "Segoe UI", "Noto Sans", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif';
 
   return (
-    <main className="relative flex min-h-screen flex-col justify-center bg-background px-4 py-6 text-body sm:px-6 sm:py-12">
+    <main className="relative flex min-h-screen flex-col justify-center bg-background px-4 py-4 text-body sm:px-6 sm:py-12">
       <div className="pointer-events-none fixed bottom-10 right-6 w-[66vw] max-w-[720px] opacity-20">
         <Image
           src="/bluewaves-logo.webp"
@@ -30,7 +30,7 @@ export function ChatShell({
       </div>
       <div className="relative mx-auto w-full max-w-[820px]">
         <div
-          className="relative w-full rounded-3xl bg-[#eadbd1] px-4 py-5 text-[18px] leading-relaxed text-[#5d5d5d] sm:px-10 sm:py-8"
+          className="relative w-full rounded-3xl bg-[#eadbd1] px-4 py-4 text-[18px] leading-relaxed text-[#5d5d5d] sm:px-10 sm:py-8"
           style={{ fontFamily: fontStack }}
         >
           {showCloseButton ? (
