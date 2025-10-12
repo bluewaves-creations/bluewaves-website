@@ -30,7 +30,7 @@ export function ChatShell({
       </div>
       <div className="relative mx-auto w-full max-w-[820px]">
         <div
-          className="relative w-full rounded-3xl bg-[#eadbd1] px-4 py-4 text-[18px] leading-relaxed text-[#5d5d5d] sm:px-10 sm:py-8"
+          className="relative w-full rounded-3xl bg-[#eadbd1] px-4 py-8 text-[18px] leading-relaxed text-[#5d5d5d] sm:px-10 sm:py-8"
           style={{ fontFamily: fontStack }}
         >
           {showCloseButton ? (
