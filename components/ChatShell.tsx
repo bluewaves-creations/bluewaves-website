@@ -18,7 +18,7 @@ export function ChatShell({
 
   return (
     <main className="relative flex min-h-screen flex-col justify-center bg-background px-4 py-4 text-body sm:px-6 sm:py-12">
-      <div className="pointer-events-none fixed bottom-10 right-6 w-[66vw] max-w-[720px] opacity-20">
+      <div className="pointer-events-none fixed bottom-10 right-10 w-[66vw] max-w-[720px] opacity-20">
         <Image
           src="/bluewaves-logo.webp"
           alt="Bluewaves logo watermark"
