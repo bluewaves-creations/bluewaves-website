@@ -51,7 +51,7 @@ export default function App() {
           Chat with specialized custom agents that handle real tasks. Invoice processing, compliance checks, customer insights—all through conversation. No complex setup. No per-seat licenses. Just a shared token pool your whole team can use. Works where you work, with your documents, your physical spaces, even in your pocket.
         </p>
         <p>
-          <strong>AI Personal Trainer</strong> — Learn by doing, not reading
+          <strong>Gizmo AI Trainer</strong> — Learn by doing, not reading
           <br />
           Our personal training app will soon live inside ChatGPT. Real situations, practical guides, instant results. Start using AI productively today in your business, not after a three-day workshop. When you&apos;re ready for more, move seamlessly to Gizmo Phoenix.
         </p>
