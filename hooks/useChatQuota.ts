@@ -158,6 +158,8 @@ export function useChatQuota(
   }, [refresh]);
 
   useEffect(() => {
+    // Hydrate state from localStorage after first client render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     refresh();
   }, [refresh]);
 
