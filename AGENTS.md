@@ -8,9 +8,9 @@
 - Global Tailwind setup lives in `app/globals.css`; background assets and icons go in `public/` (e.g., `bluewaves-logo.webp`).
 
 ## Build, Test, and Development Commands
-- Prefer pnpm: `pnpm dev`, `pnpm build`, `pnpm start`, `pnpm lint`. The repo supports npm as well, but pnpm is the default.
-- Launching `pnpm dev` spins up ChatKit, watermark artwork, and quota form; use it to validate both copy and assistant flow.
-- Run `pnpm lint` (with `--fix` when appropriate) before submitting changes.
+- Use bun: `bun dev`, `bun run build`, `bun start`, `bun run lint`.
+- Launching `bun dev` spins up ChatKit, watermark artwork, and quota form; use it to validate both copy and assistant flow.
+- Run `bun run lint` (with `--fix` when appropriate) before submitting changes.
 
 ## Coding Style & Naming Conventions
 - All UI modules are client components (`"use client"`); keep new components in PascalCase and colocate styles with markup.
@@ -27,7 +27,7 @@
 - Imperative, Conventional-Commit style summaries (`feat:`, `fix:`, `refactor:`) are preferred.
 - Include before/after screenshots or screen recordings, plus note which environment variables/keys were required for QA.
 - Call out any Resend or ChatKit sandbox limitations discovered during testing.
-- Rebase frequently; avoid merge commits. Ensure `pnpm lint` (and any added tests) pass before requesting review.
+- Rebase frequently; avoid merge commits. Ensure `bun run lint` (and any added tests) pass before requesting review.
 
 ## Security & Configuration Tips
 - Required secrets: `NEXT_PUBLIC_SITE_URL`, `OPENAI_API_KEY`, `NEXT_PUBLIC_CHATKIT_WORKFLOW_ID`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL`. Keep them in `.env.local` (never commit).

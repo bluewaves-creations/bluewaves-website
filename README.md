@@ -13,10 +13,10 @@ This project powers the Bluewaves marketing site and ChatKit demo. It pairs a be
 
 ## Getting Started
 
-Install dependencies with your preferred package manager (pnpm shown):
+Install dependencies:
 
 ```bash
-pnpm install
+bun install
 ```
 
 Create `.env.local` from the example:
@@ -35,7 +35,7 @@ Populate the following variables:
 Start the dev server:
 
 ```bash
-pnpm dev
+bun dev
 ```
 
 Visit `http://localhost:3000` to explore the landing page, open the chat modal, and verify quota behaviour.
